@@ -4,8 +4,12 @@
   "description": "electron-basic",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "nodemon --exec electron ."
   },
   "author": "KY",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^31.1.0",
+    "nodemon": "^3.1.4"
+  }
 }
