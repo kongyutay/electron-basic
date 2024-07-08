@@ -8,12 +8,15 @@ console.log('preload')
 console.log(process.version);
 //可以打印node版本了
 
-const {contextBridge} = require('electron')
+const {contextBridge, ipcRenderer} = require('electron')
 
-//这个方法只能访问一部分的node api
+//这个方法只能访问一部分的node api(xyz: __dirname)
 contextBridge.exposeInMainWorld('myAPI', {
     version: process.version,
-    xyz: __dirname
+    saveFile: (data)=> {
+        //类似消息订阅和发布，第一个参数是信道，第二个是数据
+        ipcRenderer.send('file-save', data)
+    }
 
 })
 //会往window对象添加abc属性，这个属性是一个对象装着xyz

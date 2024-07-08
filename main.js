@@ -1,6 +1,12 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
+const fs = require('fs')
 //BrowserWindow 是构造函数
+
+//会传入两个参数一个是事件对象，一个是数据
+function writeFile(event, data){
+    fs.writeFileSync('D:/hello.txt', data)
+}
 
 function createWindow() {
     const win = new BrowserWindow({
@@ -15,6 +21,8 @@ function createWindow() {
         //可以添加更多的配置项，请参考base-window实例属性
         //alwaysOnTop: true
     })
+    //要在loadfile之前初始化预加载脚本的通道
+    ipcMain.on('file-save', writeFile);
     win.loadFile('./pages/index.html')
 }
 
