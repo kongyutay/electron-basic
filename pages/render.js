@@ -1,4 +1,4 @@
 const btn1 = document.getElementById('btn1')
 btn1.onclick = () => {
-    alert('You clicked me')
+    console.log(myAPI.version)    //直接获得window属性内的abc
 }

@@ -4,7 +4,7 @@
   "description": "electron-basic",
   "main": "main.js",
   "scripts": {
-    "start": "nodemon --exec electron ."
+    "start": "electron ."
   },
   "author": "KY",
   "license": "ISC",

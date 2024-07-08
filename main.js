@@ -1,4 +1,5 @@
 const {app, BrowserWindow} = require('electron')
+const path = require('path')
 //BrowserWindow 是构造函数
 
 function createWindow() {
@@ -6,6 +7,11 @@ function createWindow() {
         width: 800,
         height: 600,
         autoHideMenuBar: true,
+        webPreferences: {
+            preload: path.resolve(__dirname, './preload')
+        }
+        //要放上面的配置项来置入预加载脚本
+
         //可以添加更多的配置项，请参考base-window实例属性
         //alwaysOnTop: true
     })
