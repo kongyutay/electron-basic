@@ -8,13 +8,18 @@ function writeFile(event, data){
     fs.writeFileSync('D:/hello.txt', data)
 }
 
+function readFile(){
+    
+    return fs.readFileSync('D:/hello.txt').toString()
+}
+
 function createWindow() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
         autoHideMenuBar: true,
         webPreferences: {
-            preload: path.resolve(__dirname, './preload')
+            preload: path.resolve(__dirname, './preload.js')
         }
         //要放上面的配置项来置入预加载脚本
 
@@ -23,6 +28,7 @@ function createWindow() {
     })
     //要在loadfile之前初始化预加载脚本的通道
     ipcMain.on('file-save', writeFile);
+    ipcMain.handle('file-read', readFile);
     win.loadFile('./pages/index.html')
 }
 
