@@ -25,3 +25,4 @@ contextBridge.exposeInMainWorld('myAPI', {
 
 })
 //会往window对象添加abc属性，这个属性是一个对象装着xyz
+//如果是单向，发送是send，接受是on
